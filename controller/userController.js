@@ -66,7 +66,25 @@ const userController = {
         if(!auth) {
             return appError(400, '帳號或密碼錯誤', next);
         }
-        generateSendJWT(user, 201, res);
+        generateSendJWT(user, 200, res);
+    },
+    //修改密碼
+    async updatePassword(req, res, next) {
+        let {password, confirmPassword} = req.body;
+        if(password !== confirmPassword) {
+            return appError(400, '密碼不一致', next);
+        }
+
+        if(!validator.isLength(password.trim(), {min: 8})) {
+            return appError(400, '密碼至少需要 8 碼', next);
+        }
+
+        password = await bcrypt.hash(password.trim(), 12);
+        const user = await User.findByIdAndUpdate(req.user.id, {
+            password: password
+        });
+
+        generateSendJWT(user, 200, res);
     }
 }
 
