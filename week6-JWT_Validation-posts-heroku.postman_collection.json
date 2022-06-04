@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "6edd583a-6633-43dd-ba4c-1c8811c5b5f8",
+		"name": "week6-JWT_Validation-posts-heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6469607"
+	},
+	"item": [
+		{
+			"name": "註冊",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"meng ping\",\r\n    \"email\": \"banana010203@gmail.com\",\r\n    \"password\": \"dsxer526\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://damp-waters-66247.herokuapp.com/users/sign_up",
+					"protocol": "https",
+					"host": [
+						"damp-waters-66247",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"sign_up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登入",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"banana010203@gmail.com\",\r\n    \"password\": \"dsxer526\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://damp-waters-66247.herokuapp.com/users/sign_in",
+					"protocol": "https",
+					"host": [
+						"damp-waters-66247",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改密碼",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYzFkNDkzZTg2MTc4ZTAwODYzNyIsImlhdCI6MTY1NDMzMjYwMywiZXhwIjoxNjU0OTM3NDAzfQ.X32miO8AAPaeHZ8ZkoSVSHoeNtEUL0ZIUyF6BN3wTaE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"password\": \"abcd123456\",\r\n   \"confirmPassword\":\"abcd123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://damp-waters-66247.herokuapp.com/users/updatePassword",
+					"protocol": "https",
+					"host": [
+						"damp-waters-66247",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"updatePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得個人資訊",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYzFkNDkzZTg2MTc4ZTAwODYzNyIsImlhdCI6MTY1NDMzMjYwMywiZXhwIjoxNjU0OTM3NDAzfQ.X32miO8AAPaeHZ8ZkoSVSHoeNtEUL0ZIUyF6BN3wTaE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://damp-waters-66247.herokuapp.com/users/profile",
+					"protocol": "https",
+					"host": [
+						"damp-waters-66247",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改個人資訊",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYzFkNDkzZTg2MTc4ZTAwODYzNyIsImlhdCI6MTY1NDMzMjQ0NSwiZXhwIjoxNjU0OTM3MjQ1fQ.7vJ_IAd4_JCt5BFH9C_yLNKf9Xcj-OSBQaLk9TWA4KM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"meng ping Han\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://damp-waters-66247.herokuapp.com/users/profile",
+					"protocol": "https",
+					"host": [
+						"damp-waters-66247",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
