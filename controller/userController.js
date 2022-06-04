@@ -4,24 +4,11 @@ const appError = require('../services/appError');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const {generateSendJWT} = require('../services/auth');
 
 const mongoose = require('mongoose');
 
-const generateSendJWT= (user, statusCode, res)=>{
-    // 產生 JWT token
-    const token = jwt.sign({id:user._id},process.env.JWT_SECRET,{
-      expiresIn: process.env.JWT_EXPIRES_DAY
-    });
-    
-    user.password = undefined;
-    res.status(statusCode).json({
-      status: 'success',
-      user:{
-        token,
-        name: user.name
-      }
-    });
-}
+
 
 const userController = {
     //註冊
