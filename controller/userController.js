@@ -32,7 +32,6 @@ const userController = {
          * 2.第一步驗證通過後，再來驗證格式是否符合
          * 3.第二部驗證通過後，要建立新的user到資料庫中，密碼不可為明碼
          */
-        console.log('L:33 signUP start ...');
         if( !name  || name.trim() === '' || !email || email.trim() === '' || !password || password.trim() === '') {
             return appError(400, '欄位未正確填寫，不可以為空', next);
         }
