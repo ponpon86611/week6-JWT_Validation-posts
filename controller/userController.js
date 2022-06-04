@@ -89,6 +89,22 @@ const userController = {
     //取得個人資料
     async getProfile(req, res, next) {
         resHandler.successHandler(res, req.user, 200);
+    },
+    //更新個人資料
+    async updateProfile(req, res, next) {
+        let {name, photo, sex} = req.body;
+        if(!name || name.trim() === '') {
+            return appError(400, '暱稱未正確填寫，不可以為空', next);
+        }
+        const updateUser = await User.findByIdAndUpdate(req.user.id, 
+            {
+                name,
+                photo,
+                sex
+            },
+            { new: true }
+        )
+        resHandler.successHandler(res, updateUser, 200);
     }
 }
 

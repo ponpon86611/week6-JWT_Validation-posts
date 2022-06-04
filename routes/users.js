@@ -13,4 +13,6 @@ router.post('/updatePassword', isAuth, handleErrorAsync(userController.updatePas
 
 router.get('/profile', isAuth, handleErrorAsync(userController.getProfile));
 
+router.patch('/profile', isAuth, handleErrorAsync(userController.updateProfile));
+
 module.exports = router;
