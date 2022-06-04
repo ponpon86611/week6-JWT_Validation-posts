@@ -85,6 +85,10 @@ const userController = {
         });
 
         generateSendJWT(user, 200, res);
+    },
+    //取得個人資料
+    async getProfile(req, res, next) {
+        resHandler.successHandler(res, req.user, 200);
     }
 }
 
