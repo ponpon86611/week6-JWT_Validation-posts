@@ -26,13 +26,19 @@ const userController = {
         if(!validator.isEmail(email)) {
             return appError(400, 'email 格式不正確，請填寫正確 email', next);
         }
+            
+        email = email.trim();
+        //先確認email是否已有註冊過，避免報出 重大錯誤: MongoServerError: E11000 duplicate key error collection: week6.users index: email_1 dup key: { email: "apple0203@gmail.com" }
+        const userCheck = await User.findOne({email});
+        if(userCheck) {
+            return appError(400, 'email已使用過', next);
+        }      
 
         if(!validator.isLength(password, {min: 8})) {
             return appError(400, '密碼至少需要 8 碼', next);
         }
-
         name = name.trim();
-        email = email.trim();
+        
         password = password.trim();
 
         password = await bcrypt.hash(password, 12);
